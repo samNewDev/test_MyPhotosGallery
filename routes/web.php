@@ -24,3 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('image', 'ImageController@post');
 Route::get('/home', 'ImageController@index');
 Route::delete('image/{id}', 'ImageController@destroy');
+
+Route::get('profile', 'UserController@profile')->name('users.profile');
+Route::put('profile', 'UserController@edit')->name('users.edit');
