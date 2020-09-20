@@ -1,0 +1,43 @@
+{{-- this part is reserved for displaying images in the user_interface --}}
+<div class="container mt-2">
+    <div class="row">
+        @forelse ($images as $image)
+            <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12">
+                <div class="card">
+                    <img src="{{ asset($image->image) }}" alt="Broken" class="card-img-top" height="220">
+                    <div class="card-body">
+                        <form action="">
+                             <input type="submit" value="Delete" class="btn btn-danger">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @empty
+            
+        @endforelse
+    </div>
+</div>
+
+{{--  this part is for uploading images --}}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    {{ __('Upload Image') }}
+                </div>
+
+                <div class="card-body">
+                    <form action="image" enctype="multipart/form-data" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <input type="file" name="image[]" class="form-control-image" multiple>
+                        </div>
+                        <input type="submit" value="Upload" class="btn btn-primary">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
