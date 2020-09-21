@@ -21,6 +21,7 @@ class UserController extends Controller
         
         $validation = $request->validate([
             'lastname' => 'required|string|min:2',
+            'avatar' => 'image',
         ]);
         
         $user = Auth::user();
@@ -28,6 +29,7 @@ class UserController extends Controller
         $user->update([
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
+            'avatar' => $request->avatar
         ]);
         
         Session::flash('success', 'Your Profile has been Successfully updated');

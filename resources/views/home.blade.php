@@ -20,8 +20,10 @@
         <div class="container mt-2">
             <div class="row">
                 @forelse ($images as $image)
+                @if (Auth::user()->id == $image->user_id)
                     <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12">
                         <div class="card">
+                            
                             <a href="#" class="card-img-top"><img src="{{ asset($image->image) }}" alt="Broken" height="220"></a>
                             <div class="card-body">
                                 <form action="image/{{ $image->id }}" method="POST">
@@ -30,8 +32,10 @@
                                      <input type="submit" value="Delete" class="btn btn-danger">
                                 </form>
                             </div>
+                            
                         </div>
                     </div>
+                @endif
                 @empty
                 <div class="card">
                     <div class="card-header">
@@ -41,11 +45,12 @@
                         <p>There are no uploads yet</p>
                     </div>
                 </div>
+                
                 @endforelse
             </div>
-            <div class="row justify-content-center">
+            {{--<div class="row justify-content-center">
                 {{ $images->links()}}
-            </div>
+            </div>--}}
         </div>
         
     </div>
